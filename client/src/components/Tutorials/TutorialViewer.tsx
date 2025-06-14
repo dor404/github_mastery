@@ -163,7 +163,7 @@ const TutorialViewer: React.FC = () => {
         totalPages: tutorial?.pages?.length || 0
       });
       
-      const response = await fetch(`http://localhost:5001/api/tutorials/progress/${tutorialId}`, {
+              const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:5001/api'}/tutorials/progress/${tutorialId}`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,

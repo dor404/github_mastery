@@ -52,7 +52,7 @@ const CompletionViewer: React.FC = () => {
         setUserName(user.username || user.email || 'Student');
       }
 
-      const response = await fetch('http://localhost:5001/api/dashboard/completion-stats', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:5001/api'}/dashboard/completion-stats`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },

@@ -44,7 +44,7 @@ const MyAchievements: React.FC = () => {
       setLoading(true);
       const token = localStorage.getItem('token');
       
-      const response = await fetch('http://localhost:5001/api/badges/achievements', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:5001/api'}/badges/achievements`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
 

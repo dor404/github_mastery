@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  server:
+    build: ./server
+    ports:
+      - "5001:5001"
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - MONGODB_URI=mongodb+srv://shoambe:shoam123@githubcluster.j8ytk.mongodb.net/github_mastery?retryWrites=true&w=majority&appName=GitHubCluster
+      - PORT=5001
+    restart: always
+
+  client:
+    build: ./client
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    restart: always
+    depends_on:
+      - server
+
+volumes:
+  mongodb_data: 

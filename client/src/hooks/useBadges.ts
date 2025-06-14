@@ -1,5 +1,7 @@
 import { useState, useCallback } from 'react';
 
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5001/api';
+
 interface Badge {
   _id: string;
   name: string;
@@ -26,7 +28,7 @@ export const useBadges = () => {
       setLoading(true);
       const token = localStorage.getItem('token');
       
-      const response = await fetch('http://localhost:5001/api/badges/check-badges', {
+      const response = await fetch(`${API_URL}/badges/check-badges`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -62,7 +64,7 @@ export const useBadges = () => {
     try {
       const token = localStorage.getItem('token');
       
-      const response = await fetch('http://localhost:5001/api/badges/my-badges', {
+      const response = await fetch(`${API_URL}/badges/my-badges`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }

@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { Tutorial } from '../types/tutorial';
 
-// Use fixed API URL without environment variable that might be missing
-const API_URL = 'http://localhost:5001/api';
+// Use environment variable or fallback to localhost
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5001/api';
 
 // For debugging
 console.log('API URL for tutorials:', API_URL);

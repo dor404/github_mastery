@@ -21,7 +21,7 @@ const app = express();
 // Middleware
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
-    ? 'http://localhost:3000'  // Production origin
+    ? process.env.CLIENT_URL || 'http://localhost:3000'  // Use CLIENT_URL environment variable
     : ['http://localhost:3000', 'http://localhost:3001', 'http://127.0.0.1:3000'], // Development origins
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
